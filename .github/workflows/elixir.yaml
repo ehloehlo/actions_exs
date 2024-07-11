@@ -8,6 +8,9 @@ on:
 
 env:
   MIX_ENV: test
+  PG_USER: postgres
+  PG_PASS: postgres
+  PG_HOST: db
 
 permissions:
   contents: read
