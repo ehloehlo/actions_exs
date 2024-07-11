@@ -8,7 +8,7 @@ import Config
 config :actions_exs, ActionsExs.Repo,
   username: System.get_env("PG_USER"),
   password: System.get_env("PG_PASS"),
-  hostname: System.get_env("PG_HOST"),
+  hostname: System.get_env("PG_HOST") || "localhost",
   database:
     System.get_env("PG_DB_NAME") || "actions_exs_test#{System.get_env("MIX_TEST_PARTITION")}",
   pool: Ecto.Adapters.SQL.Sandbox,
