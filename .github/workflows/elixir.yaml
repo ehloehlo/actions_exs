@@ -7,7 +7,7 @@ on:
     branches: [ "master" ]
 
 env:
-  MIX_ENV: tests
+  MIX_ENV: test
 
 permissions:
   contents: read
@@ -64,6 +64,13 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-mix-${{ env.cache-name }}-
           ${{ runner.os }}-mix-
+
+    - name: Clean to rule out incremental build as a source of flakiness
+      if: github.run_attempt != '1'
+      run: |
+        mix deps.clean --all
+        mix clean
+      shell: sh
 
     - name: Install dependencies
       run: mix deps.get
