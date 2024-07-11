@@ -1,4 +1,7 @@
 defmodule ActionsExs.Counter do
+  @moduledoc """
+  Just a counter that only goes up
+  """
   use Ecto.Schema
   import Ecto.Changeset
 

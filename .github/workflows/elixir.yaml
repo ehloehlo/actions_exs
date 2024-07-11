@@ -83,5 +83,8 @@ jobs:
     - name: Check Formatting
       run: mix format --check-formatted
 
+    - name: Credo 
+      run: mix credo diff --from-git-merge-base origin/master
+
     - name: Run tests
       run: mix test

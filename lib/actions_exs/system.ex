@@ -1,8 +1,10 @@
 defmodule ActionsExs.System do
+  @moduledoc false
+
   alias ActionsExs.Counter
   alias ActionsExs.Repo
 
-  def get_counter() do
+  def get_counter do
     case Counter.get_click() |> Repo.one() do
       nil -> init_click()
       cnt -> cnt
@@ -15,7 +17,7 @@ defmodule ActionsExs.System do
     |> Repo.update!()
   end
 
-  defp init_click() do
+  defp init_click do
     %Counter{click: 0}
     |> Counter.changeset()
     |> Repo.insert!()
